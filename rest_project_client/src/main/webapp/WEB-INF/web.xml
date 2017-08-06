@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1">
+	<display-name>rest_project_client</display-name>
+	<welcome-file-list>
+		<welcome-file>EmployeeServlet</welcome-file>
+	</welcome-file-list>
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+			<form-login-page>/WEB-INF/jsps/login.jsp</form-login-page>
+			<form-error-page>/WEB-INF/jsps/login-error.jsp</form-error-page>
+		</form-login-config>
+	</login-config>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>query database</web-resource-name>
+			<url-pattern>/index.jsp</url-pattern>
+			<url-pattern>/EmployeeServlet</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>user</role-name>
+			<role-name>admin</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<servlet>
+		<description></description>
+		<display-name>EmployeeServlet</display-name>
+		<servlet-name>EmployeeServlet</servlet-name>
+		<servlet-class>rest_project.controller.EmployeeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EmployeeServlet</servlet-name>
+		<url-pattern>/EmployeeServlet</url-pattern>
+	</servlet-mapping>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/jsps/errors.jsp</location>
+	</error-page>
+</web-app>
