@@ -35,6 +35,7 @@ public class EmployeeService implements EmployeeServiceInterface {
 		ClientConfig config = new DefaultClientConfig();
 		Client client = Client.create(config);
 		resource = client.resource(getBaseURI());
+		System.out.println(""):
 	}
 
 	@Override
